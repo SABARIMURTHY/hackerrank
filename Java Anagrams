@@ -1,0 +1,40 @@
+
+import java.util.Scanner;
+
+public class Solution {
+    Scanner scan=new Scanner(System.in);
+
+    public static boolean isAnagram(String s1, String s2) {
+        s1=s1.toLowerCase();
+        s2=s2.toLowerCase();
+        if (s1.length() != s2.length()) {// this is because usually all anagrams will have the same length this is the starting step
+            return false;
+        }
+        int[] frequency1 = new int[256]; // Assuming ASCII characters
+        int[] frequency2 = new int[256];
+
+        // Count frequency of each character in both strings
+        for (int i = 0; i < s1.length(); i++) {
+            frequency1[s1.charAt(i)]++;//this line is to increment the count of the characters in a frequency1 array of s1 string
+            frequency2[s2.charAt(i)]++;//this line is to increment the count of the characters in a frequency2 array of s2 string
+        }
+
+        // Compare frequency arrays
+        for (int i = 0; i < 256; i++) {
+            if (frequency1[i] != frequency2[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+  public static void main(String[] args) {
+    
+        Scanner scan = new Scanner(System.in);
+        String a = scan.next();
+        String b = scan.next();
+        scan.close();
+        boolean ret = isAnagram(a, b);
+        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
+    }
+}
