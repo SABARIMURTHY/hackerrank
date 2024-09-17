@@ -1,0 +1,25 @@
+// this code is java string tokens
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String s = scan.nextLine();//getting string from user
+        String[] string=s.trim().split("[\\s,?''!.\\s_@]+");//this is for splitting the string based upon split() delimiter and regex
+        s = s.trim();//this is to trim that means removing white spaces whereever the white space is
+        if (s.isEmpty()) {
+            System.out.println(0);
+        } 
+        else{
+        int tokenCount=string.length;
+        System.out.println(tokenCount);
+        for(int i=0;i<string.length;i++){
+            System.out.println(string[i]);
+        }
+        }
+        scan.close();
+    }
+}
+
