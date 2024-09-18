@@ -1,0 +1,49 @@
+//this code is to convert to currency formatter 
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double payment = scanner.nextDouble();
+        scanner.close();
+        
+
+        Currency inr = Currency.getInstance("INR"); 
+        Currency usd = Currency.getInstance("USD"); 
+        Currency chi = Currency.getInstance("CNY"); 
+        Currency fra = Currency.getInstance("EUR"); 
+        // Local instance for India 
+        Locale loc = new Locale("en", "IN"); 
+        // Create a NumberFormatter with custom currency 
+        NumberFormat inrFormatter 
+            = NumberFormat.getCurrencyInstance(loc); 
+        inrFormatter.setCurrency(inr); 
+        NumberFormat usdFormatter 
+            = NumberFormat.getCurrencyInstance(Locale.US); 
+        usdFormatter.setCurrency(usd); 
+        NumberFormat chiFormatter 
+            = NumberFormat.getCurrencyInstance(Locale.CHINA); 
+        chiFormatter.setCurrency(chi); 
+        NumberFormat fraFormatter 
+            = NumberFormat.getCurrencyInstance(Locale.FRANCE); 
+        fraFormatter.setCurrency(fra); 
+  
+        // Convert string to BigDecimal and format as 
+        // currency 
+        BigDecimal amt = new BigDecimal(payment); 
+        String currInr = inrFormatter.format(amt); 
+        String currUs = usdFormatter.format(amt); 
+        String currChi = chiFormatter.format(amt);
+        String currFra = fraFormatter.format(amt); 
+
+        System.out.println("US: " + currUs);
+        System.out.println("India: " + currInr);
+        System.out.println("China: " + currChi);
+        System.out.println("France: " + currFra);
+    }
+}
